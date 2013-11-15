@@ -7,6 +7,7 @@ class Type(models.Model):
 
     class Meta:
         db_table = 'invTypes'
+        managed = False
 
 class Item(models.Model):
     id = models.IntegerField(primary_key=True, db_column='itemID')
@@ -15,6 +16,7 @@ class Item(models.Model):
 
     class Meta:
         db_table = 'invItems'
+        managed = False
 
 class Region(models.Model):
     id = models.IntegerField(primary_key=True, db_column='regionID')
@@ -22,14 +24,16 @@ class Region(models.Model):
 
     class Meta:
         db_table = 'mapRegions'
+        managed = False
 
 class Constellation(models.Model):
-    id = models.IntegerField(primary_key=True, db_column='contellationID')
+    id = models.IntegerField(primary_key=True, db_column='constellationID')
     region = models.ForeignKey(Region, db_column='regionID')
     name = models.CharField(max_length=50, db_column='constellationName')
 
     class Meta:
         db_table = 'mapConstellations'
+        managed = False
 
 class SolarSystem(models.Model):
     id = models.IntegerField(primary_key=True, db_column='solarSystemID')
@@ -39,6 +43,7 @@ class SolarSystem(models.Model):
 
     class Meta:
         db_table = 'mapSolarSystems'
+        managed = False
 
 class MapItem(Item):
     item = models.OneToOneField(Item, primary_key=True, parent_link=True,
@@ -48,9 +53,10 @@ class MapItem(Item):
     constellation = models.ForeignKey(Constellation, db_column='constellationID',
                                       null=True)
     region = models.ForeignKey(Region, db_column='regionID', null=True)
-    planetary_orbit = models.IntegerField(null=True)
-    solar_orbit = models.IntegerField(null=True) 
+    planetary_orbit = models.IntegerField(null=True, db_column='orbitIndex')
+    solar_orbit = models.IntegerField(null=True, db_column='celestialIndex') 
 
     class Meta:
         db_table = 'mapDenormalize'
+        managed = False
 
