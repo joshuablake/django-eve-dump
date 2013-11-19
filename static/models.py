@@ -2,7 +2,7 @@ from django.db import models
 
 class Type(models.Model):
     id = models.IntegerField(primary_key=True, db_column='typeID')
-    name = models.CharField(max_length=50, db_column='typeName')
+    name = models.CharField(max_length=200, db_column='typeName')
     published = models.BooleanField()
 
     class Meta:
