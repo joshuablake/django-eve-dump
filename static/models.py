@@ -6,6 +6,7 @@ class Type(models.Model):
     published = models.BooleanField()
 
     class Meta:
+        managed = False
         db_table = 'invTypes'
 
 class Item(models.Model):
@@ -14,6 +15,7 @@ class Item(models.Model):
     location = models.ForeignKey('self', db_column='locationID', related_name='contains')
 
     class Meta:
+        managed = False
         db_table = 'invItems'
 
 class Region(models.Model):
@@ -21,6 +23,7 @@ class Region(models.Model):
     name = models.CharField(max_length=50, db_column='regionName')
 
     class Meta:
+        managed = False
         db_table = 'mapRegions'
 
 class Constellation(models.Model):
@@ -29,6 +32,7 @@ class Constellation(models.Model):
     name = models.CharField(max_length=50, db_column='constellationName')
 
     class Meta:
+        managed = False
         db_table = 'mapConstellations'
 
 class SolarSystem(models.Model):
@@ -38,6 +42,7 @@ class SolarSystem(models.Model):
     security = models.DecimalField(max_digits=5, decimal_places=4)
 
     class Meta:
+        managed = False
         db_table = 'mapSolarSystems'
 
 class MapItem(Item):
@@ -52,5 +57,6 @@ class MapItem(Item):
     solar_orbit = models.IntegerField(null=True, db_column='celestialIndex') 
 
     class Meta:
+        managed = False
         db_table = 'mapDenormalize'
 
