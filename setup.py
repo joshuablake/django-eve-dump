@@ -6,4 +6,5 @@ setup(name = 'django-eve-dump',
       author = 'Joshua Blake',
       author_email = 'joshbblake@gmail.com',
       packages = find_packages(),
+      scripts=['bin/load_static.sh',],
 )
