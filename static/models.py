@@ -4,6 +4,7 @@ class Type(models.Model):
     id = models.IntegerField(primary_key=True, db_column='typeID')
     name = models.CharField(max_length=200, db_column='typeName')
     published = models.BooleanField()
+    market_group = models.IntegerField(null=True, db_column='marketGroupID')
 
     class Meta:
         managed = False
